@@ -18,15 +18,23 @@ var ITEM_TPL_DELETE_BUTTON =
 * @usage
 *
 * ```html
-* <ion-list show-delete="shouldShowDelete">
-*   <ion-item>
-*     <ion-delete-button class="ion-minus-circled"></ion-delete-button>
+* <ion-list ng-controller="MyCtrl" show-delete="shouldShowDelete">
+*   <ion-item ng-repeat="item in items">
+*     <ion-delete-button class="ion-minus-circled" ng-click="onDelete(item)></ion-delete-button>
 *     Hello, list item!
 *   </ion-item>
 * </ion-list>
 * <ion-toggle ng-model="shouldShowDelete">
 *   Show Delete?
 * </ion-toggle>
+*
+* function MyCtrl($scope) {
+*   $scope.items = [1, 2, 3, 4];
+*   $scope.onDelete = function(item) {
+*     //Remove the item from the array
+*     $scope.items.splice($scope.items.indexOf(item), 1);
+*   };
+* }
 * ```
 */
 IonicModule
